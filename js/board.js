@@ -1,20 +1,22 @@
-const board = document.querySelector(".board");
-const squares = createSquares()
-
 const initData = () => {
   board.innerHTML = `
-    ${squares.map(el => (`
+    ${squares
+      .map(
+        (el) => `
       <div class="square" 
       style="background-color:${el.color}">
-      ${el.piece.type ? `<span style="color:${el.piece.color}">${el.piece.type}</span>` : ''}
+      ${
+        el.piece.type
+          ? `<span style="color:${el.piece.color}">${el.piece.type}</span>`
+          : ""
+      }
     </div>`
-  )).join('')}
-  `
-}
+      )
+      .join("")}
+  `;
+};
 
-initData()
-
-
+initData();
 
 //taşların oynama mantıgı
 // ${el.piece ? `<span>${el.piece}</span>` : ''}
