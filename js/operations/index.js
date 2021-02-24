@@ -1,27 +1,30 @@
-const createSquares = () => {
-  let black = false;
-  for (let i = 8; i > 0; i--) {
-    letters.map((item) => {
-      data.push(new Square(1, i, item, "piece", "color"));
-    });
-  }
-  //TODO : Daha iyi bir yöntem bul!!
-  for (let y = 0; y < 64; y++) {
-    data[y].id = y + 1;
-    data[y].color = black ? "blue" : "red";
+board.addEventListener('click', (e) => {
+  const target = e.target.closest(".square")
+  const allElements = document.querySelectorAll('.square')
+  let squareId;
+  let activeElement;
 
-    const piece = pieces.find((piece) =>
-      piece.startLocations.includes(data[y].name)
-    );
-    if (piece) {
-      data[y].piece = piece;
-      let color = data[y].number > 5 ? "white" : "black";
-      data[y].piece = { ...data[y].piece, color };
+  if (target.innerText) {
+    squareId = target.getAttribute('square-id')
+    activeElement = target
+    const squaresTemp = [...squares]
+    const currentSquare = squaresTemp.find((x, i) => x.id == squareId)
+    currentSquare.piece = ""
+
+
+    if (!target.classList.contains('selected')) {
+      Array.from(allElements).map(x => x.classList.remove("selected"))
+      activeElement = null
+      target.classList.add('selected')
+    } else {
+      activeElement = target
+      target.classList.remove('selected')
     }
-    black = !black;
-    if ((y + 1) % 8 === 0) black = !black;
+
+
+    // console.log(activeElement)
+    // initData(squaresTemp)
   }
 
-  //console.log(data)
-  return data;
-};
+
+})

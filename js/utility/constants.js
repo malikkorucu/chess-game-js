@@ -26,4 +26,4 @@ const pieces = [
   ]),
 ];
 const board = document.querySelector(".board");
-const squares = createSquares();
+

@@ -5,4 +5,6 @@ class Piece {
         this.point = point;
         this.startLocations = startLocations
     }
+
+    
 }
