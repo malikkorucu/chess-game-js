@@ -33,6 +33,8 @@ const initData = (squareArr) => {
   squares = []
   squareArr.forEach(el => (squares.push(el)))
 
+  console.log(squares)
+
   board.innerHTML = `
     ${squares
       .map(
@@ -40,7 +42,7 @@ const initData = (squareArr) => {
           <div class="square" 
           square-id="${el.id}"
           style="background-color:${el.color}">
-           <div style="font-size:20px">${el.id} - ${el.name}</div>
+           <div style="font-size:30px">${el.piece.type ? el.piece.type : ''}</div>
           </div>`
       )
       .join("")}
